@@ -1,4 +1,28 @@
 ### 对应字符是否相等判断公共状态
+-暴力枚举
+```python
+import operator
+class Solution:
+    def LCS(self , str1 , str2 ):
+        # write code here
+        if len(str1)>len(str2):
+            str1,str2=str2,str1        
+        m=len(str1)
+        n=len(str2)
+        res=[0,0]
+        for i in range(m):
+            if str2.find(str1[i])!=-1:
+                for j in range(str2.find(str1[i]),n):
+                    k=0
+                    while i+k<m and j+k<n and str1[i+k]==str2[j+k]:
+                        k+=1
+                    if k>res[1]:
+                        res[0]=i
+                        res[1]=k
+        start,end=res[0],res[0]+res[1]
+        return str1[start:end]
+```
+-滑动窗口
 ```python
 
 ```
